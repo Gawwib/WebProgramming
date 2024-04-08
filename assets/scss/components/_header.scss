@@ -18,6 +18,7 @@
     &__logo,
     &__toggle,
     &__shop,
+    &__userr,
     &__close{
         color: var(--title-color);
     }
@@ -40,7 +41,8 @@
         column-gap: 1rem;
     }
     &__toggle,
-    &__shop{
+    &__shop,
+    &__userr{
         font-size: 1.25rem;
         cursor: pointer;
     }

@@ -26,6 +26,7 @@ body.dark-theme{
 .dark-theme .change-theme,
 .dark-theme .nav__toggle,
 .dark-theme .nav__shop,
+.dark-theme .nav__userr,
 .dark-theme .button--gray{
     color: hsl(0, 0%, 15%);
 }
@@ -36,7 +37,8 @@ body.dark-theme{
 
 .scroll-header .change-theme,
 .scroll-header .nav__toggle,
-.scroll-header .nav__shop{
+.scroll-header .nav__shop,
+.scroll-header .nav__userr{
     color: var(--title-color);
 }
 
