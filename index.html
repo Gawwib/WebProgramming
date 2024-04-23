@@ -63,9 +63,6 @@
                     </div>
 
                     
-                    <div class="nav__toggle" id="nav-toggle">
-                        <i class='bx bx-grid-alt' ></i>
-                    </div>
                 </div>
             </nav>
         </header>
@@ -195,7 +192,6 @@
                             presentations in this store, discover them now.
                         </p>
     
-                        <a href="#" class="button button--small">Discover</a>
                     </div>
 
                     <div class="story__images">
@@ -347,7 +343,7 @@
                         </p>
                     </div>
 
-                    <form action="" class="newsletter__subscribe">
+                    <form action="" class="newsletter__subscribe form">
                         <input name="EmailInfo" type="email" placeholder="Enter your email" class="newsletter__input">
                         <button class="button">
                             SUBSCRIBE
@@ -418,27 +414,5 @@
         <!--=============== JQUERY SPAPP ===============-->
         <script src="assets/js/jquery.spapp.min.js"></script>
         
-        <!--=============== AJAX ===============-->
-        <script>
-            const formEl = document.querySelector('.newsletter__subscribe');
-
-            formEl.addEventListener('submit', event => {
-                event.preventDefault();
-                
-                const formData = new FormData(formEl);
-                const data = Object.fromEntries(formData);
-                
-                fetch('https://reqres.in/api/users',{
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                }).then(res => res.json())
-                  .then(data => console.log(data))
-                  .catch(error=>console.log(error));
-            });
-        </script>
-
     </body>
 </html>
