@@ -1,0 +1,84 @@
+openapi: 3.0.3
+info:
+  title: Sample API
+  description: This is a sample API that uses JWT authentication.
+  version: 1.0.0
+servers:
+  - url: http://api.example.com/v1
+    description: Main API server
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT  # optional, arbitrary string that specifies the format of the token
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+          format: int32
+
+security:
+  - BearerAuth: []
+
+paths:
+  /login:
+    post:
+      summary: Login to the application
+      requestBody:
+        description: User credentials
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        '401':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /protected:
+    get:
+      summary: Access a protected route
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Successful access to the protected route
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "You have accessed a protected route"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

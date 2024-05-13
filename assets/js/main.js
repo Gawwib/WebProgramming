@@ -147,33 +147,3 @@ themeButton.addEventListener('click', () => {
 })
 
 
-let forms = document.querySelectorAll('.form');
-
-forms.forEach(form => {
-    form.addEventListener('submit', event => {
-    event.preventDefault();
-
-    let formData = new FormData(form);
-    let data = Object.fromEntries(formData);
-
-    let url = '';
-    if (form.classList.contains('newsletter__subscribe')) {
-        url = 'https://reqres.in/api/users';
-    } else if (form.classList.contains('login')) {
-        url = 'https://reqres.in/api/users';
-    } else if (form.classList.contains('signup')) {
-        url = 'https://reqres.in/api/users';
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(error=>console.log(error));
-    });
-});
-
